@@ -1,0 +1,258 @@
+:root {
+  --color-blue: #0094ff;
+  --color-white: #fff;
+  --curve: cubic-bezier(0.420, 0.000, 0.275, 1.155);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.star {
+  position: absolute;
+  animation: grow 3s infinite;
+  fill: var(--color-blue);
+  opacity: 0;
+}
+.star:nth-child(1) {
+  width: 12px;
+  height: 12px;
+  left: 12px;
+  top: 16px;
+}
+.star:nth-child(2) {
+  width: 18px;
+  height: 18px;
+  left: 168px;
+  top: 84px;
+}
+.star:nth-child(3) {
+  width: 10px;
+  height: 10px;
+  left: 32px;
+  top: 162px;
+}
+.star:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  left: 82px;
+  top: -12px;
+}
+.star:nth-child(5) {
+  width: 14px;
+  height: 14px;
+  left: 125px;
+  top: 162px;
+}
+.star:nth-child(6) {
+  width: 10px;
+  height: 10px;
+  left: 16px;
+  top: 16px;
+}
+.star:nth-child(1) {
+  animation-delay: 1.5s;
+}
+.star:nth-child(2) {
+  animation-delay: 3s;
+}
+.star:nth-child(3) {
+  animation-delay: 4.5s;
+}
+.star:nth-child(4) {
+  animation-delay: 6s;
+}
+.star:nth-child(5) {
+  animation-delay: 7.5s;
+}
+.star:nth-child(6) {
+  animation-delay: 9s;
+}
+
+.checkmark {
+  position: relative;
+  padding: 30px;
+  animation: checkmark 5m var(--curve) both;
+}
+.checkmark__check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate3d(-50%, -50%, 0);
+  fill: var(--color-white);
+}
+.checkmark__background {
+  fill: var(--color-blue);
+  animation: rotate 35s linear both infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes grow {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes checkmark {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  10%, 50%, 90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.wrapper {
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 960px; /* 2 */
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Quicksand|Tulpen+One|Wire+One|Audiowide|Changa|Fugaz+One|Lobster|News+Cycle|Nothing+You+Could+Do|Press+Start+2P|Rajdhani|Righteous|Sarpanch&amp;display=swap');
+.font-lobster{
+
+  font-family: 'Lobster';
+  margin-top: -80px;
+  color: black;
+  font-size: 50px;
+  text-align: center;
+}
+
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+  background: linear-gradient(to bottom, #aaffa9, #11ffbd);
+}
+
+
+.wrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.button{
+  touch-callout: none;
+  margin-top: 40px;
+  user-select: none;
+  display: inline-block;
+  border: .2em solid;
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  font-size: 40px;
+  font-family: 'Lobster';
+  padding-bottom: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.6;
+  color: #FFF;
+  &__text{
+    display: block;
+    padding:1em 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:before{
+      content: attr(title);
+    }
+    &--bis{
+      display: block;
+      position: absolute;
+      top: 0; left:0; right: 0; bottom: 0;
+      transform: translateX(-1 * $anim-text-offset);
+      opacity: 0;
+    }
+  }
+  &__mask{
+    display: block;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: white;
+    transform: translateX(-100%) rotate(45deg);
+    transition: all 0.3s;
+  }  
+}
+
+.button:hover{
+  opacity: 1;
+  .button__text{
+    animation: fx-text .3s ease-out;
+    &--bis{
+      animation: fx-text-bis .3s ease-out;
+    }
+  }    
+  .button__mask{
+    animation: fx-mask .3s ease-out;
+  }    
+}
+
+.button:active{
+  opacity: 1;
+  background: white;
+  color: inherit;
+}
+
+
+
+@keyframes fx-mask {
+  0%{
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100%{
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@keyframes fx-text {
+  0%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX($anim-text-offset);
+    opacity: 0;
+  }
+}
+@keyframes fx-text-bis {
+  0%{
+    transform: translateX(-1 * $anim-text-offset);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
