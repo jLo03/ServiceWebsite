@@ -13,9 +13,7 @@ $(this).css({
 });                  
 });
 
-
-
-(function() {
+window.addEventListener("load", function(){
 	var config = {
 	  apiKey: "AIzaSyD7MYy8NoKAp8cD_rA6H9hGApIoIC1i8MY",
 	  authDomain: "torontostudentservice-ed779.firebaseapp.com",
@@ -57,8 +55,9 @@ $(this).css({
 	    } // end user null check
 
 	}); // end check auth state
+});
 
-	
+(function() {
 	document.getElementById("button").addEventListener("click", function(){
 	  console.log("work in progress");
 	});
