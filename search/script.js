@@ -16,6 +16,49 @@ $(this).css({
 
 
 (function() {
+	var config = {
+	  apiKey: "AIzaSyD7MYy8NoKAp8cD_rA6H9hGApIoIC1i8MY",
+	  authDomain: "torontostudentservice-ed779.firebaseapp.com",
+	  databaseURL: "https://torontostudentservice-ed779.firebaseio.com",
+	  projectId: "torontostudentservice-ed779",
+	  storageBucket: "torontostudentservice-ed779.appspot.com",
+	  messagingSenderId: "696202748628",
+	  appId: "1:696202748628:web:b4b7515d79d994d1119141",
+	  measurementId: "G-BZHQRLW91Y"
+	};
+
+	firebase.initializeApp(config);
+
+
+	function signIn() {
+		var provider = new firebase.auth.GoogleAuthProvider();
+	    firebase.auth().signInWithRedirect(provider).then(function(result) { 
+	    	window.location.replace("fbtest.html");
+	    });
+	}
+
+	var username;
+	var userId;
+	var userphoto;
+	        
+	// Check to see if you are logged i
+	firebase.auth().onAuthStateChanged(function(user) {
+	    if (user == null) {
+	    	setTimeout(signIn, 1);
+	    	//alert('Please Sign In')
+	      	return;
+
+	    } else {
+	      	username = user.displayName;
+	      	userId = user.uid; // you can also get .displayName, .photoURL, .email
+	      	userphoto = user.photoURL;
+	      	document.getElementById("name").innerHTML = username;
+	                
+	    } // end user null check
+
+	}); // end check auth state
+
+	
 	document.getElementById("button").addEventListener("click", function(){
 	  console.log("work in progress");
 	});
